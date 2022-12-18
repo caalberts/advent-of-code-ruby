@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'optparse'
+require_relative '../lib/advent_of_code'
+
+year = Time.now.year
+day = 1
+part = 1
+
+OptionParser.new do |opts|
+  opts.on('-y', '--year=year', Integer, 'Year') do |value|
+    year = value
+  end
+
+  opts.on('-d', '--day=day', Integer, 'Day number') do |value|
+    day = value
+  end
+
+  opts.on('-p', '--part=part', Integer, 'Part number') do |value|
+    part = value
+  end
+end.parse!(ARGV)
+
+puts AdventOfCode::Solver.new(year: year, day: day, part: part).solve

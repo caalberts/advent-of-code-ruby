@@ -1,0 +1,12 @@
+image: ruby:3.0.3
+
+rspec:
+  stage: test
+  before_script:
+    - bundle install --path vendor/bundle
+  script:
+    - bundle exec rspec
+  cache:
+    key: bundle-cache
+    paths:
+     - vendor/bundle
