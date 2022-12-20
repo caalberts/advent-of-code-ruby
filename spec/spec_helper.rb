@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "advent-of-code-ruby"
+require 'advent_of_code'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
