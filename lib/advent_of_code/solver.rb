@@ -29,7 +29,7 @@ module AdventOfCode
 
     def input
       verify_cookie
-      AdventOfCode::Input.new(year: year, day: day).fetch
+      AdventOfCode::Input.fetch(year: year, day: day)
     end
   end
 end

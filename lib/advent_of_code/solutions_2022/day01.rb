@@ -8,17 +8,31 @@ module AdventOfCode
       end
 
       def part1
-        inventory.max
+        inventory.max_by(&:calories).calories
       end
 
       def part2
-        inventory.sort.reverse.first(3).sum
+        inventory.sort_by(&:calories).reverse.first(3).sum(&:calories)
       end
 
       private
 
+      Elf = Struct.new(:calories) do
+        def add(calories)
+          self.calories += calories
+        end
+      end
+
       def inventory
-        @input.split("\n\n").map { |elf| elf.split("\n").map(&:to_i).sum }
+        [Elf.new(0)].tap do |elfs|
+          @input.lines.each do |food|
+            if food.empty?
+              elfs << Elf.new(0)
+            else
+              elfs.last.add(food.to_i)
+            end
+          end
+        end
       end
     end
   end

@@ -89,7 +89,9 @@ module AdventOfCode
       private
 
       def bags
-        @input.split("\n").map { |line| Bag.new(line) }
+        @input.lines.map do |line|
+          Bag.new(line)
+        end
       end
 
       def priorities_in_collection(collection, num_partitions)

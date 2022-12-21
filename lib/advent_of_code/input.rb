@@ -6,24 +6,25 @@ module AdventOfCode
   class Input
     attr_reader :year, :day
 
-    def initialize(year: Time.now.year, day: 1)
-      @year = year
-      @day = day
+    URI = "https://adventofcode.com/%{year}/day/%{day}/input".freeze
+    HEADERS = { 'Cookie' => "session=#{Config.cookie}" }.freeze
+
+    def self.fetch(year: Time.now.year, day: 1)
+      response = Faraday.get(URI % { year: year, day: day }, {}, HEADERS)
+
+      new(response.body)
     end
 
-    def fetch
-      response = Faraday.get(uri, {}, headers)
-      response.body
+    def initialize(content)
+      @content = content
+    end
+
+    def lines
+      content.each_line(chomp: true)
     end
 
     private
 
-    def uri
-      "https://adventofcode.com/#{year}/day/#{day}/input"
-    end
-
-    def headers
-      { 'Cookie' => "session=#{Config.cookie}" }
-    end
+    attr_reader :content
   end
 end

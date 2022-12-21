@@ -84,7 +84,7 @@ module AdventOfCode
       private
 
       def lines
-        @input.split("\n")
+        @input.lines
       end
     end
   end
