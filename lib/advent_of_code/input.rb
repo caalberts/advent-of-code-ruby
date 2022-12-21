@@ -20,7 +20,7 @@ module AdventOfCode
     end
 
     def lines
-      content.each_line(chomp: true)
+      content.each_line(chomp: true).lazy
     end
 
     private
