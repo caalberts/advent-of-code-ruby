@@ -8,4 +8,5 @@ gemspec
 gem 'faraday'
 gem "rake", "~> 13.0"
 gem "rspec", "~> 3.0"
+gem 'rspec-parameterized', '~> 0.5.2'
 gem "rubocop", "~> 1.7"

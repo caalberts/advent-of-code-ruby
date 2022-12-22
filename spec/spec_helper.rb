@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'rspec-parameterized'
+
 require 'advent_of_code'
 
 RSpec.configure do |config|
